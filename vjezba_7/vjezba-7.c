@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable : 4996)
 #include<stdio.h>
 #include<string.h>
@@ -30,21 +30,21 @@ int push(StogPozicija stog, DirPozicija trenutni);
 StogPozicija pop(StogPozicija stog);
 
 
-int main() 
+int main()
 {
 	int x = 1;
 	char y = { 0 };
 
 	StogPozicija stog = NULL;
-	DirPozicija roditelj = NULL, trenutni = NULL, element =NULL;
+	DirPozicija roditelj = NULL, trenutni = NULL, element = NULL;
 
-	stog =StvoriStog();
+	stog = StvoriStog();
 	roditelj = StvoriDirektorij();
 	trenutni = roditelj;
 
-	while(x)
+	while (x)
 	{
-		printf("1- md, 2 - cd dir, 3 - cd.., 4 - dir 5 – izlaz\n");
+		printf("1- md, 2 - cd dir, 3 - cd.., 4 - dir 5 ï¿½ izlaz\n");
 		scanf(" %c", &y);
 
 		switch (y) {
@@ -53,12 +53,15 @@ int main()
 			trenutni->dijete = md(trenutni->dijete, element);
 			break;
 		case '2':
-			element=cd_dir(stog, trenutni);
+			element = cd_dir(stog, trenutni);
 			trenutni = element;
 			break;
 		case '3':
 			element = pop(stog);
-			trenutni = element;
+			if (!element)
+				printf("Ne moze ici vise od root-a!");
+			else
+				trenutni = element;
 			break;
 		case '4':
 			dir(trenutni);
@@ -116,7 +119,7 @@ DirPozicija md(DirPozicija trenutni, DirPozicija element)
 	{
 		trenutni->brat = md(trenutni->brat, element);
 	}
-	else if (strcmp(trenutni->ime, element->ime) > 0) 
+	else if (strcmp(trenutni->ime, element->ime) > 0)
 	{
 		element->brat = trenutni;
 		return element;
@@ -197,7 +200,7 @@ StogPozicija pop(StogPozicija stog)
 	pom = stog->next;
 	q = pom->roditelj;
 	stog->next = pom->next;
-	
+
 	free(pom);
-	return NULL;
+	return q;
 }
