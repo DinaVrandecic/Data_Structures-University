@@ -1,0 +1,5 @@
+2021-01-04
+kruh 5 40
+mlijeko 5 60
+sol 1 25
+tikvica 5 20

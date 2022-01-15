@@ -1,0 +1,5 @@
+2020-03-21
+kruh 2 10
+mlijeko 3 15
+chips 3 20
+krafna 2 7
